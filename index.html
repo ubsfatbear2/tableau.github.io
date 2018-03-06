@@ -3,8 +3,7 @@
     <head>
         <title>getData() Basic Example</title>
 		<script type="text/javascript" src="http://localhost/javascripts/api/tableau-2.2.1.min.js"></script>
-	    
-        <script type="text/javascript">
+	    <script type="text/javascript">
             var viz, sheet, table;
 //<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js">
             function initViz() {
@@ -13,10 +12,10 @@
 		    //url = "https://ssbi.lfuat.net/views/testing20180305/abc",
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
                     options = {
+                        width: "200px",
+                        height: "200px",
                         hideTabs: true,
                         hideToolbar: true,
-			width: "200px",
-			height: "200px",
                         onFirstInteractive: function () {
                             document.getElementById('getData').disabled = false; // Enable our button
                         }

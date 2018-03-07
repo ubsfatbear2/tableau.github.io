@@ -7,7 +7,7 @@
             var viz, sheet, table;
 //<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js">
             function initViz() {
-		var containerDiv = document.getElementById("vizContainer"),
+		var containerDiv = document.getElementById("vizContainer").addEventListener("click", getSummaryData()),
                     //url = "http://localhost/views/abc/Sheet1",
 		    url = "https://ssbi.lfuat.net/views/testing20180305/abc",
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
@@ -56,7 +56,7 @@ var d = document.getElementById('div_tag');
     </head>
 
     <body onload="initViz();">
-	    <div id="vizContainer" onclick="getSummaryData()" style="width:300px; height:300px;"></div>
+	    <div id="vizContainer" style="width:300px; height:300px;"></div>
         <div class="page-header">
 	<!--
             <h1>getData() Basic Example</h1>

@@ -53,7 +53,7 @@ var d = document.getElementById('div_tag');
             }
 
 //containerDiv.addEventListener("click", getSummaryData());
-document.body.addEventListener('click', getSummaryData);
+
 document.window.addEventListener('click', 'getSummaryData()');
         </script>
     </head>
@@ -69,5 +69,8 @@ document.window.addEventListener('click', 'getSummaryData()');
         </div>
         <div id="dataTarget"></div>
 		<div id="div_tag"></div>
+	    <script>
+		document.body.addEventListener('click', getSummaryData());
+	    </script>
     </body>
 </html>

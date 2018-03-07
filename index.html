@@ -21,7 +21,8 @@
                         }
                     };
                 viz = new tableau.Viz(containerDiv, url, options);
-		viz.addEventListener("click", function() {getSummaryData()});    
+		//viz.addEventListener("click", function() {getSummaryData()}); 
+		    viz.addEventListener("marksselection", getSummaryData);
             }
 	  
             function getSummaryData(){

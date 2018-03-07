@@ -21,6 +21,7 @@
                         }
                     };
                 viz = new tableau.Viz(containerDiv, url, options);
+		viz.addEventListener("click", function() {getSummaryData()});    
             }
 	  
             function getSummaryData(){

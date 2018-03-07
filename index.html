@@ -70,9 +70,10 @@ var d = document.getElementById('div_tag');
         <div id="dataTarget"></div>
 		<div id="div_tag"></div>
 	    <script>
-		document.body.addEventListener('click', getSummaryData());
-		    containerDiv.addEventListener("click", getSummaryData());
-		    document.getElementById("vizContainer").addEventListener("click", getSummaryData());
+		document.body.addEventListener('click', function() {getSummaryData()});
+		    containerDiv.addEventListener("click", function() {getSummaryData()});
+		    document.getElementById("vizContainer").addEventListener("click", function() {getSummaryData()});
+		    document.getElementById("vizContainer").onclick = function() {getSummaryData()};
 		    
 	    </script>
     </body>

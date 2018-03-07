@@ -56,7 +56,7 @@ var d = document.getElementById('div_tag');
     </head>
 
     <body onload="initViz();">
-	    <div id="vizContainer" style="width:300px; height:300px;"></div>
+	    <div id="vizContainer" onclick="getSummaryData()" style="width:300px; height:300px;"></div>
         <div class="page-header">
 	<!--
             <h1>getData() Basic Example</h1>
@@ -64,9 +64,6 @@ var d = document.getElementById('div_tag');
 	-->
             <button id="getData" onmouseover="getSummaryData()" class="btn" disabled>Get Data</button>
         </div>
-        <script>
-window.onclick = getSummaryData();
-</script>
         <div id="dataTarget"></div>
 		<div id="div_tag"></div>
     </body>

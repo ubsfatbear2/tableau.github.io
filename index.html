@@ -12,8 +12,8 @@
 		    url = "https://ssbi.lfuat.net/views/testing20180305/abc",
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
                     options = {
-                        width: "200px",
-                        height: "200px",
+                        width: "300px",
+                        height: "300px",
                         hideTabs: true,
                         hideToolbar: true,
                         onFirstInteractive: function () {
@@ -56,12 +56,13 @@ var d = document.getElementById('div_tag');
     </head>
 
     <body onload="initViz();">
+	    <div id="vizContainer" style="width:300px; height:300px;"></div>
         <div class="page-header">
             <h1>getData() Basic Example</h1>
             <p>Click the "Get Data" button to get summary data for the viz.</p>
             <button id="getData" onmouseover="getSummaryData()" class="btn" disabled>Get Data</button>
         </div>
-        <div id="vizContainer" style="width:200px; height:200px;"></div>
+        
         <!--<div id="dataTarget"></div>-->
 		<div id="div_tag"></div>
     </body>

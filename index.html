@@ -22,9 +22,7 @@
                     };
                 viz = new tableau.Viz(containerDiv, url, options);
             }
-		    
-document.getElementById("vizContainer").addEventListener("click", getSummaryData());
-		    
+	  
             function getSummaryData(){
                 sheet = viz.getWorkbook().getActiveSheet();
                 //sheet = viz.getWorkbook().getActiveSheet().getWorksheets().get("Sheet 1")[0];
@@ -53,7 +51,8 @@ var d = document.getElementById('div_tag');
 	
 			
             }
-			
+
+//document.getElementById("vizContainer").addEventListener("click", getSummaryData());			
         </script>
     </head>
 

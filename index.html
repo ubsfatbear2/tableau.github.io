@@ -54,7 +54,7 @@ var d = document.getElementById('div_tag');
 
 //containerDiv.addEventListener("click", getSummaryData());
 
-document.window.addEventListener('click', 'getSummaryData()');
+//document.window.addEventListener('click', 'getSummaryData()');
         </script>
     </head>
 
@@ -71,6 +71,9 @@ document.window.addEventListener('click', 'getSummaryData()');
 		<div id="div_tag"></div>
 	    <script>
 		document.body.addEventListener('click', getSummaryData());
+		    containerDiv.addEventListener("click", getSummaryData());
+		    document.getElementById("vizContainer").addEventListener("click", getSummaryData());
+		    
 	    </script>
     </body>
 </html>

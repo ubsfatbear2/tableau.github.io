@@ -63,9 +63,9 @@
 var d = document.getElementById('image_area');
 //data.length refer to no. of rows
 //data[0].length refers to no. of fieldset
-var imgheight = "200"
-var urlimg1 = 	"<img src=" + JSON.stringify(data[0][1].value) + " height='" + imgheight +"'><p><br/><p>"
-alert(urlimg1);
+var imgheight = "80"
+var urlimg1 = 	"<img src=" + JSON.stringify(data[0][0].value) + " height='" + imgheight +"'><p><br/><p>"
+//alert(urlimg1);
 if (data.length == 1) {
 d.innerHTML = urlimg1;
   }
@@ -76,11 +76,11 @@ for (x = 1; x < data.length ; x++) {
     //text += "<img src=" + JSON.stringify(data[_x][1].value) + " height='" + imgheight +"'><p><br/><p>";
 	if(data.length ==1){break;}
 		var new_data = data[x];
-	var new_data_2 = new_data[1].value;
+	var new_data_2 = new_data[0].value;
 	var new_stringify = JSON.stringify(new_data_2);
 	urlimg1 += "<img src=" + new_stringify + " height='" + imgheight +"'><p><br/><p>";
 	d.innerHTML = urlimg1;
-	alert(urlimg1);
+	//alert(urlimg1);
 	//alert(data.length);
 		}	
 
@@ -127,10 +127,10 @@ div.right{
     height:100%;
 	min-height:2000px;
     width:500px;
-	//background: red;
+	background: orange;
 	font-size:0%;
 	position:relative;
-	top:120px;
+	top:68px;
 	overflow: auto;
 }
 

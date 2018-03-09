@@ -20,7 +20,7 @@
 		    url = "https://ssbi.lfuat.net/views/testing20180305/abc",
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
                     options = {
-                        width: "500px",
+                        width: "800px",
 			width: "100%",
                         height: "2000px",
 			//height: "500px",
@@ -49,7 +49,8 @@
                     ignoreSelection: false,
                     includeAllColumns: false
                 };
-
+//var sheetsize = sheet.getSize();
+//alert(JSON.stringify(sheetsize));
                 sheet.getSummaryDataAsync(options).then(function(t){
 				var data = t.getData();
 				var columns = t.getColumns();
@@ -125,7 +126,7 @@ for (x = 1; x < data.length + 1; x++) {
 	 
 div.left {
     height:2000px;
-    width:500px;
+    width:800px;
 	//background: green;
 }
 
@@ -142,7 +143,7 @@ div.right{
 
 .container{
     height:2000px;
-	width:100%;min-width:1050px;
+	width:100%;min-width:1350px;
     //width:1050px;
 	//background: black;
 }

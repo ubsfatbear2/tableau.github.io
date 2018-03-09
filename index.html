@@ -1,28 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
-        <title>getData() Basic Example</title>
-		<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js"></script>
-	    <script type="text/javascript">
+<!DOCTYPE HTML>
+<HTML><HEAD>
+         <TITLE>getData() Basic Example</TITLE>		 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<SCRIPT src="" type="text/javascript"></SCRIPT>
+	     //<script type="text/javascript" src="http://localhost/javascripts/api/tableau-2.2.1.min.js"></script>
+
+<SCRIPT type="text/javascript">
             var viz, sheet, table;
-//<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js">
+<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js">
             function initViz() {
 		var containerDiv = document.getElementById("vizContainer"),
                     //url = "http://localhost/views/abc/Sheet1",
 		    url = "https://ssbi.lfuat.net/views/testing20180305/abc",
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
                     options = {
-                        width: "300px",
-                        height: "300px",
+                        width: "500px",
+						width: "100%",
+                        height: "2000px",
+						//height: "500px",
                         hideTabs: true,
                         hideToolbar: true,
-                        onFirstInteractive: function () {
-                            document.getElementById('getData').disabled = false; // Enable our button
-                        }
+						onFirstInteractive:function () {getSummaryData()}
+                        //onFirstInteractive: function () {
+                        //    document.getElementById('getData').disabled = false; // Enable our button
+                        //}
                     };
                 viz = new tableau.Viz(containerDiv, url, options);
 		//viz.addEventListener("click", function() {getSummaryData()}); 
 		    viz.addEventListener("marksselection", getSummaryData);
+			viz.addEventListener("filterchange", getSummaryData);
+			//viz.addEventListener("marksselection", getSummaryData);
             }
 	  
             function getSummaryData(){
@@ -47,38 +54,139 @@
 			
 //var urlx = JSON.parse(JSON.stringify(data));
 //document.write(urlx);
-var d = document.getElementById('div_tag');
-            d.innerHTML = "<img src=" + JSON.stringify(data[0][1].value) + "><img src=" + JSON.stringify(data[0][2].value) + ">";
-                });
-	
+var d = document.getElementById('image_area');
+//data.length refer to no. of rows
+//data[0].length refers to no. of fieldset
+var imgheight = "200"
+var urlimg1 = 	"<img src=" + JSON.stringify(data[0][1].value) + " height='" + imgheight +"'><p><br/><p>"
+
+if (data.length == 1) {
+d.innerHTML = urlimg1;
+  }
+
+
+
+for (x = 1; x < data.length ; x++) { 
+    //text += "<img src=" + JSON.stringify(data[_x][1].value) + " height='" + imgheight +"'><p><br/><p>";
+	if(data.length ==1){break;}
+		var new_data = data[x];
+	var new_data_2 = new_data[1].value;
+	var new_stringify = JSON.stringify(new_data_2);
+	urlimg1 += "<img src=" + new_stringify + " height='" + imgheight +"'><p><br/><p>";
+	d.innerHTML = urlimg1;
+	//alert(data.length);
+		}	
+
+            //d.innerHTML = "<img src=" + JSON.stringify(data[0][1].value) + " height='200'><p><br/><p>"+"<img src=" + JSON.stringify(data[0][2].value) + " height='200'>";
+			//d.innerHTML = urlimg1 + urlimg2
 			
+
+/*
+for (x = 1; x < data.length + 1; x++) { 
+    //text += "<img src=" + JSON.stringify(data[_x][1].value) + " height='" + imgheight +"'><p><br/><p>";
+	var new_data = data[x];
+	var new_data_2 = new_data[1].value;
+	var new_stringify = JSON.stringify(new_data_2);
+	urlimg1 += "<img src=" + new_stringify + " height='" + imgheight +"'><p><br/><p>";
+	d.innerHTML = urlimg1;
+	alert(data.length);
+		}
+*/
+
+                });
+				
+		
+		
+		
             }
 
 //containerDiv.addEventListener("click", getSummaryData());
 
 //document.window.addEventListener('click', 'getSummaryData()');
-        </script>
-    </head>
 
-    <body onload="initViz();">
-	    <div id="vizContainer" style="width:300px; height:300px;"></div>
-	    <!--
-        <div class="page-header">
-	
-            <h1>getData() Basic Example</h1>
-            <p>Click the "Get Data" button to get summary data for the viz.</p>
-	
-            <button id="getData" onmouseover="getSummaryData()" class="btn" disabled>Get Data</button>
-        </div>
-	-->
-        <div id="dataTarget"></div>
-		<div id="div_tag"></div>
-	    <script>
+
+
+
+        </SCRIPT>
+     <style>
+	 
+div.left {
+    height:2000px;
+    width:500px;
+	//background: green;
+}
+
+div.right{
+    height:100%;
+	min-height:2000px;
+    width:500px;
+	//background: red;
+	font-size:0%;
+	position:relative;
+	top:120px;
+	overflow: auto;
+}
+
+.container{
+    height:2000px;
+	width:100%;min-width:1050px;
+    //width:1050px;
+	//background: black;
+}
+
+.container div {
+    display: inline-block;
+}
+	 
+	 
+	 
+	 /*
+	 .class1
+			{
+				width: 50%;
+				float: left;
+			}
+			.class2
+			{
+				width: 50%;
+				float: right;
+			}
+			*/
+	 </style>
+</HEAD>     
+<BODY onload="initViz();">
+
+
+<DIV class="container">
+	<DIV id="vizContainer" class="left" ></DIV><!--
+			<div class="page-header">
+		
+				<h1>getData() Basic Example</h1>
+				<p>Click the "Get Data" button to get summary data for the viz.</p>
+		
+				<button id="getData" onmouseover="getSummaryData()" class="btn" disabled>Get Data</button>
+			</div>
+		--> 
+			
+	<!--
+	<DIV id="dataTarget"></DIV>
+	--> 
+
+	<DIV id="image_area" class="right"></DIV>
+</DIV>
+
+
+
+<SCRIPT>
 		//document.body.addEventListener('click', function() {getSummaryData()});
 		    //containerDiv.addEventListener("click", function() {getSummaryData()});
 		    //document.getElementById("vizContainer").addEventListener("click", function() {getSummaryData()});
 		    //document.getElementById("vizContainer").onclick = function() {getSummaryData()};
-		    
-	    </script>
-    </body>
-</html>
+		//alert(url1); 
+		//document.window.onclick = "getSummaryData()";
+	//document.write(url1);
+	
+
+
+	    </SCRIPT>
+     </BODY></HTML>

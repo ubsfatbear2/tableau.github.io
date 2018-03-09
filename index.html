@@ -5,7 +5,6 @@
 <SCRIPT src="" type="text/javascript"></SCRIPT>
 
 <script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js"></script>	
-<script type="text/javascript" src="http://localhost/javascripts/api/tableau-2.2.1.min.js"></script>	
 <!--
 <script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js">
 <script type="text/javascript" src="http://localhost/javascripts/api/tableau-2.2.1.min.js"></script>
@@ -22,20 +21,20 @@
 		    //http://localhost/views/abc/Sheet1?iframeSizedToWindow=true&:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no
                     options = {
                         width: "500px",
-						width: "100%",
+			width: "100%",
                         height: "2000px",
-						//height: "500px",
+			//height: "500px",
                         hideTabs: true,
                         hideToolbar: true,
-						onFirstInteractive:function () {getSummaryData()}
+			onFirstInteractive:function () {getSummaryData()}
                         //onFirstInteractive: function () {
                         //    document.getElementById('getData').disabled = false; // Enable our button
                         //}
                     };
                 viz = new tableau.Viz(containerDiv, url, options);
 		//viz.addEventListener("click", function() {getSummaryData()}); 
-		    viz.addEventListener("marksselection", getSummaryData);
-			viz.addEventListener("filterchange", getSummaryData);
+		viz.addEventListener("marksselection", getSummaryData);
+		viz.addEventListener("filterchange", getSummaryData);
 			//viz.addEventListener("marksselection", getSummaryData);
             }
 	  
@@ -66,7 +65,7 @@ var d = document.getElementById('image_area');
 //data[0].length refers to no. of fieldset
 var imgheight = "200"
 var urlimg1 = 	"<img src=" + JSON.stringify(data[0][1].value) + " height='" + imgheight +"'><p><br/><p>"
-
+alert(urlimg1);
 if (data.length == 1) {
 d.innerHTML = urlimg1;
   }
@@ -81,6 +80,7 @@ for (x = 1; x < data.length ; x++) {
 	var new_stringify = JSON.stringify(new_data_2);
 	urlimg1 += "<img src=" + new_stringify + " height='" + imgheight +"'><p><br/><p>";
 	d.innerHTML = urlimg1;
+	alert(urlimg1);
 	//alert(data.length);
 		}	
 

@@ -64,21 +64,27 @@ var d = document.getElementById('image_area');
 //data.length refer to no. of rows
 //data[0].length refers to no. of fieldset
 var imgheight = "80"
-var urlimg1 = 	"<img src=" + JSON.stringify(data[0][0].value) + " height='" + imgheight +"'><p><br/><p>"
+//"<a href=" +JSON.stringify(data[0][1].value)">"+
+//"'></a>
+alert(JSON.stringify(data[0][1].value));
+var urlimg1 = "<a href="+JSON.stringify(data[0][1].value) +" target='_blank'><img src=" + JSON.stringify(data[0][0].value) + " height='" + imgheight +"'></a><p><br/></p>"
 //alert(urlimg1);
 if (data.length == 1) {
 d.innerHTML = urlimg1;
+
   }
 
 
 
 for (x = 1; x < data.length ; x++) { 
-    //text += "<img src=" + JSON.stringify(data[_x][1].value) + " height='" + imgheight +"'><p><br/><p>";
+    //text += "<img src=" + JSON.stringify(data[_x][1].value) + " height='" + imgheight +"'><p><br/></p>";
 	if(data.length ==1){break;}
 		var new_data = data[x];
-	var new_data_2 = new_data[0].value;
-	var new_stringify = JSON.stringify(new_data_2);
-	urlimg1 += "<img src=" + new_stringify + " height='" + imgheight +"'><p><br/><p>";
+	var new_data_img = new_data[0].value;
+	var new_data_pdf = new_data[1].value;
+	var new_stringify_img = JSON.stringify(new_data_img);
+	var new_stringify_pdf = JSON.stringify(new_data_pdf);
+	urlimg1 += "<a href="+new_stringify_pdf+">"+" target='_blank'><img src=" + new_stringify_img + " height='" + imgheight +"'></a><p><br/></p>";
 	d.innerHTML = urlimg1;
 	//alert(urlimg1);
 	//alert(data.length);
@@ -86,7 +92,7 @@ for (x = 1; x < data.length ; x++) {
 
             //d.innerHTML = "<img src=" + JSON.stringify(data[0][1].value) + " height='200'><p><br/><p>"+"<img src=" + JSON.stringify(data[0][2].value) + " height='200'>";
 			//d.innerHTML = urlimg1 + urlimg2
-			
+		
 
 /*
 for (x = 1; x < data.length + 1; x++) { 
@@ -127,7 +133,7 @@ div.right{
     height:100%;
 	min-height:2000px;
     width:500px;
-	background: orange;
+	//background: orange;
 	font-size:0%;
 	position:relative;
 	top:68px;

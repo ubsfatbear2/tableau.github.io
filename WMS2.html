@@ -14,8 +14,9 @@ In <!DOCTYPE html>
     <script>
       function initMap() {
 	var params = getQueryParams();
-        var uluru = {lat: params.lat, lng: params.lon};
-	      
+        var uluru = {lat: 0, lng: 0};
+	uluru.lat = params.lat;
+	uluru.lng = params.lon;      
 	      alert(params.lat);
 	      alert(params.lon);
         var map = new google.maps.Map(document.getElementById('map-canvas'), {

@@ -15,7 +15,10 @@ In <!DOCTYPE html>
 function initialize() {
   var params = getQueryParams();
   var bryantPark = new google.maps.LatLng(params.lat, params.lon);
-  var panoramaOptions = {
+  
+  
+  //var panoramaOptions = {
+  var mapOptions = {
   zoom: 8,
   center: myLatlng,
   mapTypeId: 'satellite'    
@@ -31,7 +34,8 @@ function initialize() {
   //  var myPano = new google.maps.StreetViewPanorama(
   var myPano = new google.maps.Map(
       document.getElementById('map-canvas'),
-      panoramaOptions);
+      mapOptions);
+      //panoramaOptions);
   myPano.setVisible(true);
 }
 function getQueryParams(){

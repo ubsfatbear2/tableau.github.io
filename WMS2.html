@@ -1,0 +1,53 @@
+In <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Street View containers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7kubAb2-QIZuF7mnEyH4Y1Xh7o_EQ0Sg"></script>
+    <script>
+	
+      function initMap() {
+        var uluru = {lat: params.lat, lng: params.lon};
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 4,
+          center: uluru
+        });
+		map.setVisible(true);
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+	  
+	///
+
+///
+
+///
+function getQueryParams(){
+    var params = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair.length == 2)
+        {
+            params[pair[0]] = pair[1];
+        }
+     }
+     return params;
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>

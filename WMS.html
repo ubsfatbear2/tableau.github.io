@@ -23,7 +23,8 @@ function initialize() {
     },
     zoom: 1
   };
-  var myPano = new google.maps.StreetViewPanorama(
+  //  var myPano = new google.maps.StreetViewPanorama(
+  var myPano = new google.maps.Map(
       document.getElementById('map-canvas'),
       panoramaOptions);
   myPano.setVisible(true);

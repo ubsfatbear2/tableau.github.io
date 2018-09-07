@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic Embed</title>
+    
+    <script type="text/javascript" 
+	    src="https://bi.lfplatform.com/javascripts/api/tableau-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer"),
+                url = "https://bi.lfplatform.com/#/views/TestingPauseAutoUpdate/Dashboard1",
+                options = {
+                    hideTabs: false,
+                    onFirstInteractive: function () {
+                        viz.toggleAutomaticUpdatesAsync();
+                    }
+                };
+            
+            var viz = new tableau.Viz(containerDiv, url, options); 
+            // Create a viz object and embed it in the container div.
+        }
+    </script>
+</head>
+
+<body onload="initViz();">
+    <div id="vizContainer"></div>    
+</body>
+
+</html>

@@ -12,6 +12,8 @@
                 url = "https://bi.lfplatform.com/views/TestingPauseAutoUpdate/Dashboard1",
                 options = {
                     hideTabs: false,
+		width: "1800px",
+			height: "700px",
                     onFirstInteractive: function () {
                         viz.toggleAutomaticUpdatesAsync();
                     }
@@ -24,7 +26,7 @@
 </head>
 
 <body onload="initViz();">
-    <div id="vizContainer" style="width:100%; height:100%;"></div>    
+    <div id="vizContainer" style="width:1800px; height:700px;"></div>    
 </body>
 
 </html>

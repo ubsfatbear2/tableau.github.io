@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<!-- Author: Kepro - Lewis	Version:0.1-->
+<HTML>
+<HEAD>
+<TITLE>Show Image Example2</TITLE>
+	 
+<!-- use Tableau Javascript API -->
+<script type="text/javascript" src="https://ssbi.lfuat.net/javascripts/api/tableau-2.2.1.min.js"></script> <!--***Replace server path if needed***-->
+<!-- javascript for displaying image -->
+<SCRIPT type="text/javascript">
+//Step1 - Basic Embed. Only support Worksheet but not Dashboard
+            var viz, sheet, table;
+            function initViz() {
+				var containerDiv = document.getElementById("vizContainer"),
+				url = "https://ssbi.lfuat.net/views/Documentation-ShowImage20180309/Sheet1", //***Replace url here***
+                    options = {//change your desired option
+						width: "800px", //***Adjust embed viz size here***
+						width: "100%", 
+						height: "10000px", //***Adjust embed viz size here***
+                        hideTabs: true,   //optional
+                        hideToolbar: true, //optional
+						onFirstInteractive:function () {getSummaryData()}//When loading embed view finished, call the function to display image
+						};
+                viz = new tableau.Viz(containerDiv, url, options);
+				viz.addEventListener("marksselection", getSummaryData);//optional
+				viz.addEventListener("filterchange", getSummaryData);
+            }
+
+//Step2 - Get summary data and change get the url from data			
+            function getSummaryData(){
+                sheet = viz.getWorkbook().getActiveSheet();
+                options = {
+                    maxRows: 0, // Max rows to return. Use 0 to return all rows
+                    ignoreAliases: false,
+                    ignoreSelection: false, 
+                    includeAllColumns: false
+                };
+				
+                sheet.getSummaryDataAsync(options)
+				.then(function(t){
+								var data = t.getData();
+								var columns = t.getColumns();
+
+								var d = document.getElementById('image_area');
+
+								<!-- ***Change the html of how to display the image here ***-->
+								const imgheight = "80"//***Control image height here***
+								const ih1 = "<a href='#' onclick='window.open("
+								const ih2 = ");return false;'><img src="
+								const ih3 = " height='"
+								const ih4 = "' onError=\"this.onerror=null;this.src='http://icisa.cag.gov.in/images/no-image.png';\" /></a><p><br/></p>"
+								//***Change error image to display above***
+								var urlimg1 = ih1 +JSON.stringify(data[0][1].value) + ih2 + JSON.stringify(data[0][0].value) + ih3 + imgheight + ih4
+
+								if (data.length == 1) {d.innerHTML = urlimg1;}
+
+									for (x = 1; x < data.length ; x++) { 
+																		if(data.length ==1){break;}
+																		var new_data = data[x];
+																		var new_data_img = new_data[0].value;
+																		var new_data_pdf = new_data[1].value;
+																		var new_stringify_img = JSON.stringify(new_data_img);
+																		var new_stringify_pdf = JSON.stringify(new_data_pdf);
+																		urlimg1 += ih1+ new_stringify_pdf + ih2 + new_stringify_img + ih3 + imgheight +ih4;
+																		
+									}	
+								d.innerHTML = urlimg1;
+
+                });				
+            }
+</SCRIPT>
+
+<!--*** Change formatting here ***-->
+<style>
+	 
+div.left {
+    height:10000px;
+    width:800px;
+	//background: green;
+}
+
+div.right{
+    height:100%;
+	min-height:10000px;
+    width:500px;
+	//background: orange;
+	font-size:0%;
+	position:relative;
+	top:68px;
+	overflow: auto;
+}
+
+.container{
+    height:10000px;
+	width:100%;min-width:1350px;
+    //width:1050px;
+	//background: black;
+}
+
+.container div {
+    display: inline-block;
+}
+</style>
+
+</HEAD>
+
+<!--body-->
+<BODY onload="initViz();">
+
+
+	<DIV class="container">
+		<DIV id="vizContainer" class="left" ></DIV>
+		<DIV id="image_area" class="right"></DIV>
+	</DIV>
+</BODY>
+
+</HTML>
